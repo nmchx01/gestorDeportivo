@@ -1,9 +1,10 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
-const SUPABASE_URL = "https://<TU-PROJECT>.supabase.co";
-const SUPABASE_ANON_KEY = "<TU-ANON-KEY>";
+import { createClient } from '@supabase/supabase-js'
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseUrl = 'https://lmikjnqplfcllpykzgjp.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
+
 
 export const FavoritosModel = {
   async obtenerFavoritos() {
