@@ -1,8 +1,9 @@
 // ===== Configuración de Supabase =====
-const { createClient } = supabase;
-const supabaseUrl = "https://lmikjnqplfcllpykzgjp.supabase.co";   // <-- Cambia esto
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxtaWtqbnFwbGZjbGxweWt6Z2pwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxNDEzODcsImV4cCI6MjA3MTcxNzM4N30.cu0MnL-ZlzKWh-DgesPFGeLyyIXhtH3oQIME3pR_5_U";                        // <-- Cambia esto
-const supabaseClient = createClient(supabaseUrl, supabaseKey);
+// Inicializa Supabase (v2, vía CDN)
+const supabaseUrl = "https://lmikjnqplfcllpykzgjp.supabase.co";   // <- tu Project URL
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxtaWtqbnFwbGZjbGxweWt6Z2pwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxNDEzODcsImV4cCI6MjA3MTcxNzM4N30.cu0MnL-ZlzKWh-DgesPFGeLyyIXhtH3oQIME3pR_5_U";                // <- tu anon public
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
 
 // ===== Referencias en el DOM =====
 const form = document.getElementById("favoritoForm");
@@ -66,6 +67,21 @@ async function eliminarFavorito(id) {
     cargarFavoritos();
   }
 }
+
+(async () => {
+  const { data, error } = await supabase
+    .from('favoritos')
+    .select('*')
+    .limit(1);
+
+  if (error) {
+    console.error('[Supabase TEST] Error:', error);
+  } else {
+    console.log('[Supabase TEST] OK. Ejemplo de respuesta:', data);
+  }
+})();
+
+
 
 // ===== Inicializar =====
 cargarFavoritos();
