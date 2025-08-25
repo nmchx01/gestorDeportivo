@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Favoritos Deportivos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>⚽ Gestor de Favoritos Deportivos 🏀</h1>
+
+    <!-- Formulario para agregar favorito -->
+    <form id="favoritoForm">
+      <input type="text" id="nombre" placeholder="Nombre del jugador o equipo" required>
+      <input type="text" id="deporte" placeholder="Deporte (ej: Fútbol, Baloncesto)" required>
+      <button type="submit">Agregar a Favoritos</button>
+    </form>
+
+    <!-- Lista de favoritos -->
+    <h2>Mis Favoritos</h2>
+    <ul id="favoritosList"></ul>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
